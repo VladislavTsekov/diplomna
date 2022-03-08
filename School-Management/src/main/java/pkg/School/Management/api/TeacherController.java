@@ -29,7 +29,7 @@ public class TeacherController {
 
     @DeleteMapping(value = "/delete")
     public ResponseEntity<?> delete(@RequestParam(value = "id") Long id){
-        if (teacherRepository.findById(id) != null){
+        if (teacherRepository.findById(id).isPresent()){
             teacherRepository.deleteById(id);
             return ResponseEntity.ok("Teacher deleted");
         } else {
