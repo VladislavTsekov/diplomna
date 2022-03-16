@@ -1,0 +1,1 @@
+CREATE TABLE Teachers IF NOT EXISTS;

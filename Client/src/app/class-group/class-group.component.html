@@ -1,0 +1,18 @@
+<p>class-group works!</p>
+<table>
+  <th>
+    First Name
+  </th>
+  <th>
+    Family Name
+  </th>
+
+  <tr *ngFor="let classgroup of dataSource">
+    <td>
+      {{classgroup.firstName}}
+    </td>
+    <td>
+      {{classgroup.lastName}}
+    </td>
+  </tr>
+</table>

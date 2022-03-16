@@ -1,0 +1,23 @@
+<p>student works!</p>
+
+<div (click)="backToMainView()" class="button">
+  Back
+</div>
+
+<table>
+  <th>
+    First Name
+  </th>
+  <th>
+    Family Name
+  </th>
+
+  <tr *ngFor="let student of dataSource">
+    <td>
+      {{student.firstName}}
+    </td>
+    <td>
+      {{student.lastName}}
+    </td>
+  </tr>
+</table>

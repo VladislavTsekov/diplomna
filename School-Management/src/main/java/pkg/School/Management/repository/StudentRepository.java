@@ -5,12 +5,14 @@ import org.springframework.stereotype.Repository;
 import pkg.School.Management.model.ClassGroups;
 import pkg.School.Management.model.Students;
 
+import java.util.List;
+
 @Repository
 public interface StudentRepository extends JpaRepository<Students, Long> {
 
     Students findById(long id);
     Students findTopByFirstNameContains(String firstName);
     Students findTopByLastNameContains(String lastName);
-    Students findAllByClassGroup(ClassGroups classGroup);
+    List<Students> findAllByClassGroup(ClassGroups classGroup);
 
 }
