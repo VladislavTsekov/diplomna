@@ -3,6 +3,7 @@ package pkg.School.Management.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pkg.School.Management.model.ClassGroups;
 import pkg.School.Management.model.Students;
 import pkg.School.Management.repository.StudentRepository;
 
@@ -36,6 +37,12 @@ public class StudentController {
         } else {
             return ResponseEntity.ok("We didn't find any student with such ID");
         }
+    }
+
+    @GetMapping(value = "/findAllByClassGroup")
+    public ResponseEntity<?> findAllByClassGroup(@RequestParam (value = "classGroupId") long classGroupId){
+        List<Students> studentsList = studentRepository.findAllByClassGroup(classGroupId);
+        return ResponseEntity.ok().body(studentsList);
     }
 
     @GetMapping(value = "/findAll")

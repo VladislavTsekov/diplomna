@@ -20,6 +20,13 @@ public class Students {
     @JoinColumn(name = "group_id", nullable = false)
     private ClassGroups classGroup;
 
+    //FIX: PersistentObjectException: detached entity passed to persist thrown by JPA and Hibernate
+    public static Students init(ClassGroups classGroup){
+        Students students = new Students();
+        students.setClassGroup(classGroup);
+        return students;
+    }
+
     public ClassGroups getClassGroup() {
         return classGroup;
     }

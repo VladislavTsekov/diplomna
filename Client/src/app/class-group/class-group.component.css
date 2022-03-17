@@ -1,0 +1,33 @@
+
+
+tr th, tr td {
+  padding: 0.5rem !important;
+  place-content: flex-end;
+}
+
+tr td button{
+  margin-left: 3px;
+  margin-right: 30px;
+  width: 2.2rem;
+  height: 2.2rem; /*  35.2px  */
+  font-size: smaller;
+}
+
+
+td{
+  border-top: black solid 1px;
+}
+
+/* overwriting part of the css cuz of dropdown functionality issues*/
+::ng-deep .p-dialog-content{
+  overflow-y: inherit !important;
+}
+
+.table{
+  font-family: "Calibri";
+  border: black solid 2px;
+  background: #bcd7f5;
+  width: 70%;
+  font-size: 22px;
+  border-radius: 8px;
+}

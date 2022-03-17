@@ -20,6 +20,7 @@ import {TableModule} from "primeng/table";
 import {RippleModule} from "primeng/ripple";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {DropdownModule} from "primeng/dropdown";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     InputTextModule,
     TableModule,
     RippleModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    DropdownModule
   ],
   providers: [
     ConfirmationService,

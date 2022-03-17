@@ -1,18 +1,64 @@
-<p>class-group works!</p>
-<table>
-  <th>
-    First Name
-  </th>
-  <th>
-    Family Name
-  </th>
 
-  <tr *ngFor="let classgroup of dataSource">
-    <td>
-      {{classgroup.firstName}}
-    </td>
-    <td>
-      {{classgroup.lastName}}
-    </td>
-  </tr>
-</table>
+<!--<app-student [currentClassGroupId]="currentClassGroupId"-->
+<!--              [dataSource]="dataSource" ></app-student>-->
+
+<button pButton type="button" label="Back" class="p-mr-2 p-mb-2 create_margins" (click)="backToMainView()"></button>
+
+
+
+<p-table class = "table" [value]="dataSource" [style]="{'overflow':'auto!important', 'margin-left':'10px', 'margin-right':'10px'}" [rows]="10" [paginator]="true" stateStorage="local" [autoLayout]="true">
+  <ng-template pTemplate="header">
+    <tr>
+      <th> Group Name</th>
+      <th> Teacher</th>
+      <th>
+        <button pButton type="button" label="Create" icon="pi pi-plus"  class="p-mr-2 p-mb-2 create_margins" (click)="openNew()"></button>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template  pTemplate="body" let-classGroup>
+    <tr>
+      <td>{{classGroup.name}}</td>
+      <td>{{classGroup.teacher.firstName}} {{classGroup.teacher.lastName}}</td>
+      <td style="display:flex;">
+        <button pButton pRipple icon="pi pi-forward " class="p-button-rounded p-button-link" style="border: solid 1px"
+                (click)="forwardToStudents(classGroup)"></button>
+        <button  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"
+                 (click)="editClassGroup(classGroup)"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" [disabled]="classGroup.id==null"
+                (click)="delete(classGroup)"></button>
+      </td>
+    </tr>
+
+  </ng-template>
+  <ng-template>
+    <tr>
+      <td colspan="4">No customers found.</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<p-dialog [(visible)]="classGroupSaveDialog" [style]="{width: '450px'}" header="Class Group Details" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="teacher.id">Teacher</label>
+      <p-dropdown id="teacher.id" [options]="teacherOptions" [(ngModel)]="classGroup.teacher.id" [virtualScroll]="true"
+                  optionLabel="name" optionValue="id" [filter]="true"></p-dropdown>
+    </div>
+
+    <div class="p-field">
+      <label for="name">Class Group Name</label>
+      <input type="text" pInputText id="name" [(ngModel)]="classGroup.name"/>
+    </div>
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+

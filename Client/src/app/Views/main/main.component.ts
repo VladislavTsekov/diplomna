@@ -19,9 +19,9 @@ export class MainComponent implements OnInit {
     ])
   }
 
-  showStudent(){
+  showClassGroups(){
     this.router.navigate([
-      "/student"
+      "/classGroup"
     ])
   }
 
