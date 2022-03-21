@@ -15,7 +15,7 @@ const routes: Routes = [
     component: TeacherComponent
   },
   {
-    path: 'student',
+    path: 'student/:groupName',
     component: StudentComponent
   },
   {

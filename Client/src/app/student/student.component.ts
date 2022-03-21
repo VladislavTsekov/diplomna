@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StudentService} from "./student.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationService, Message, MessageService} from "primeng/api";
 import {Student} from "../commonModels/Student";
 import {ClassGroup} from "../commonModels/ClassGroup";
@@ -37,17 +37,25 @@ export class StudentComponent implements OnInit {
   studentSaveDialog: boolean;
   json=JSON; //{{json.stringify(Object)}} in html for test purposes
   classGroupOptions: Option[] = [];
+  //@ts-ignore
+  classGroupName: string;
 
   constructor(private studentService: StudentService, private router: Router,
               private confirmationService: ConfirmationService,
               private messageService: MessageService,
-              private classGroupService: ClassGroupService) { }
+              private classGroupService: ClassGroupService,
+              private _Activatedroute: ActivatedRoute) {
+
+
+  }
 
   async ngOnInit(){
+
     let defaultOption = {name: '', id: -1};
     this.refreshGrid()
 
     this.classGroupService.getAllClassGroups().subscribe((data) => { //don't ask, don't remember, dropdown option visualisation
+
       this.classGroupOptions = data.map(({name, id}) => {
         return {name: name, id}
       })
@@ -57,7 +65,11 @@ export class StudentComponent implements OnInit {
   }
 
   refreshGrid(){
-    this.studentService.getAllStudents().subscribe(data => {this.dataSource = data});
+    // this.studentService.getAllStudents().subscribe(data => {this.dataSource = data});
+    this.studentService.getAllStudentsByClassGroup(
+      // @ts-ignore
+      this._Activatedroute.snapshot.paramMap.get("groupName").toString()
+    ).subscribe(data => {this.dataSource = data});
   }
 
   backToClassGroups(){
@@ -89,7 +101,7 @@ export class StudentComponent implements OnInit {
   }
 
   async save(){
-    await this.studentService.saveStudent(this.student);
+    await this.studentService.saveStudent(this.student); // send to backend
 
     this.dataSource = [...this.dataSource];
     this.studentSaveDialog = false;
@@ -104,10 +116,14 @@ export class StudentComponent implements OnInit {
   }
 
   openNew() {
+
     //@ts-ignore
     this.student= {classGroup: {id: null}};
     this.student.id = 0;
     this.studentSaveDialog = true;
+    console.log("document get element by id: " + document.getElementById("classGroup.id"));
+    // @ts-ignore
+    // document.getElementById("classGroup.id").innerText = <string>this._Activatedroute.snapshot.paramMap.get("groupName")
   }
 
 }

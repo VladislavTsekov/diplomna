@@ -19,6 +19,8 @@ public class StudentController {
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<?> save(@RequestBody Students student){
+//        student.setClassGroup();
+//        Students studentsTemp = studentRepository.findFirstByClassGroupName()
         studentRepository.save(student);
 
         if(student.getId() == 0){
@@ -40,8 +42,10 @@ public class StudentController {
     }
 
     @GetMapping(value = "/findAllByClassGroup")
-    public ResponseEntity<?> findAllByClassGroup(@RequestParam (value = "classGroupId") long classGroupId){
-        List<Students> studentsList = studentRepository.findAllByClassGroup(classGroupId);
+    public ResponseEntity<?> findAllByClassGroup(@RequestParam (value = "classGroupName") String classGroupName){
+
+
+        List<Students> studentsList = studentRepository.findAllByClassGroupName(classGroupName);
         return ResponseEntity.ok().body(studentsList);
     }
 

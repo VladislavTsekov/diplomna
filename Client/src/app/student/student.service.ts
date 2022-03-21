@@ -14,7 +14,7 @@ export class StudentService {
   deleteStudentUrl = this.environment + "/student/delete/?id=";
   getAllStudentsUrl = this.environment + "/student/findAll";
   getAllClassGroupsUrl = this.environment + "/classGroup/findAll";
-  getAllStudentsByClassGroupUrl = this.environment + "/student/findAllByClassGroup/?classGroupId="
+  getAllStudentsByClassGroupUrl = this.environment + "/student/findAllByClassGroup/?classGroupName="
   constructor(private http: HttpClient) { }
 
   async saveStudent(student: Student){
@@ -22,12 +22,11 @@ export class StudentService {
   }
 
   getAllStudents(){
-    this.http.get<Student[]>(this.getAllStudentsUrl).subscribe(console.log); //server-a e dobrichuk
     return this.http.get<Student[]>(this.getAllStudentsUrl);
   }
 
-  getAllStudentsByClassGroup(id: number){
-    return this.http.get<Student[]>(this.getAllStudentsByClassGroupUrl+id);
+  getAllStudentsByClassGroup(name: string){
+    return this.http.get<Student[]>(this.getAllStudentsByClassGroupUrl+name);
   }
 
   getAllClassGroups(){

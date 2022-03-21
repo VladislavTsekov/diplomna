@@ -22,7 +22,7 @@
       <td>{{classGroup.teacher.firstName}} {{classGroup.teacher.lastName}}</td>
       <td style="display:flex;">
         <button pButton pRipple icon="pi pi-forward " class="p-button-rounded p-button-link" style="border: solid 1px"
-                (click)="forwardToStudents(classGroup)"></button>
+                (click)="forwardToStudents(classGroup.name)">  </button>
         <button  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"
                  (click)="editClassGroup(classGroup)"></button>
         <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" [disabled]="classGroup.id==null"
@@ -55,6 +55,7 @@
   </ng-template>
 
   <ng-template pTemplate="footer">
+    <div id="responseDiv">  </div>
     <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
     <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
   </ng-template>

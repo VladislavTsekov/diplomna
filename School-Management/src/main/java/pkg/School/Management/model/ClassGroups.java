@@ -12,7 +12,7 @@ public class ClassGroups {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "groupName")
+    @Column(name = "group_name", unique = true)
     private String name;
 
     @ManyToOne

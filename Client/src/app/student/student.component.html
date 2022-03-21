@@ -45,6 +45,12 @@
       <p-dropdown id="classGroup.id" [options]="classGroupOptions" [(ngModel)]="student.classGroup.id" [virtualScroll]="true"
                   optionLabel="name" optionValue="id" [filter]="true"></p-dropdown>
     </div>
+
+<!--    <div class="p-field">-->
+<!--      <label for="classGroup.id">Class Group</label>-->
+<!--      <input readonly type="text" pInputText id="classGroup.id" [(ngModel)]="student.classGroup.id"/>-->
+<!--    </div>-->
+
     <div class="p-field">
       <label for="firstName">First Name</label>
       <input type="text" pInputText id="firstName" [(ngModel)]="student.firstName"/>

@@ -68,9 +68,9 @@ export class ClassGroupComponent implements OnInit {
     ])
   }
 
-  forwardToStudents(classGroup: ClassGroup){
+  forwardToStudents(name: string){
     this.router.navigate([
-      "/student"
+      "/student/"+name
     ])
   }
 
@@ -97,12 +97,17 @@ export class ClassGroupComponent implements OnInit {
   }
 
   async save(){
-    await this.classGroupService.saveClassGroup(this.classGroup);
+    let response = await this.classGroupService.saveClassGroup(this.classGroup);
+    if (response=="A class with such name already exists!"){
+      //@ts-ignore
+      document.getElementById("responseDiv").innerText=response+"";
+    }else{
+      this.dataSource = [...this.dataSource]
+      this.classGroupSaveDialog = false;
+      //@ts-ignore
+      this.classGroup = {teacher: {}} as ClassGroup;
+    }
 
-    this.dataSource = [...this.dataSource]
-    this.classGroupSaveDialog = false;
-    //@ts-ignore
-    this.classGroup = {teacher: {}} as ClassGroup;
 
     this.refreshGrid();
   }
