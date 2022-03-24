@@ -13,6 +13,9 @@ tr td button{
   font-size: smaller;
 }
 
+.back-button{
+  margin: 5px;
+}
 
 td{
   border-top: black solid 1px;
@@ -22,10 +25,12 @@ td{
 ::ng-deep .p-dialog-content{
   overflow-y: inherit !important;
 }
+.buttons{
+  box-shadow: 2px 2px grey;
+}
 
 .table{
   font-family: "Calibri";
-  border: black solid 2px;
   background: #bcd7f5;
   width: 70%;
   font-size: 22px;

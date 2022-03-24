@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {StudentService} from "./student.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationService, Message, MessageService} from "primeng/api";
@@ -27,7 +27,6 @@ interface Option {
 })
 export class StudentComponent implements OnInit {
 
-  //todo: show students only from the classGroup clicked!!!?
 
   //@ts-ignore
   dataSource;
@@ -49,11 +48,13 @@ export class StudentComponent implements OnInit {
 
   }
 
+
   async ngOnInit(){
 
-    let defaultOption = {name: '', id: -1};
     this.refreshGrid()
 
+
+    let defaultOption = {name: '', id: -1};
     this.classGroupService.getAllClassGroups().subscribe((data) => { //don't ask, don't remember, dropdown option visualisation
 
       this.classGroupOptions = data.map(({name, id}) => {
@@ -121,9 +122,6 @@ export class StudentComponent implements OnInit {
     this.student= {classGroup: {id: null}};
     this.student.id = 0;
     this.studentSaveDialog = true;
-    console.log("document get element by id: " + document.getElementById("classGroup.id"));
-    // @ts-ignore
-    // document.getElementById("classGroup.id").innerText = <string>this._Activatedroute.snapshot.paramMap.get("groupName")
   }
 
 }

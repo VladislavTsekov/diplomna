@@ -21,6 +21,9 @@ import {RippleModule} from "primeng/ripple";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {DropdownModule} from "primeng/dropdown";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatLabel} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import {DropdownModule} from "primeng/dropdown";
     TableModule,
     RippleModule,
     ConfirmDialogModule,
-    DropdownModule
+    DropdownModule,
+    MatDividerModule,
+    MatFormFieldModule
   ],
   providers: [
     ConfirmationService,

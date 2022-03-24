@@ -1,3 +1,13 @@
 ::ng-deep html{
-  background-color: #549dff;
+  background-image: linear-gradient(#1d83c4, #5fd4ca);
+  background-attachment: fixed;
+}
+
+.header-css{
+  height: 40px;
+  background-color: #f8f9fa;
+  border:none;
+  text-align: center;
+  font-size:25px;
+  display: list-item;
 }

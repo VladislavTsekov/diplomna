@@ -1,6 +1,6 @@
 
 
-<button pButton type="button" label="Back" class="p-mr-2 p-mb-2 create_margins" (click)="backToClassGroups()"></button>
+<button pButton type="button" label="Back" class="p-mr-2 p-mb-2 buttons back-button" (click)="backToClassGroups()"></button>
 
 
 
@@ -11,7 +11,7 @@
       <th> Student Last Name</th>
       <th> Class Group</th>
       <th>
-        <button pButton type="button" label="Create" icon="pi pi-plus"  class="p-mr-2 p-mb-2 create_margins" (click)="openNew()"></button>
+        <button pButton type="button" label="Create" icon="pi pi-plus"  class="p-mr-2 p-mb-2 buttons" (click)="openNew()"></button>
       </th>
     </tr>
   </ng-template>
@@ -47,8 +47,8 @@
     </div>
 
 <!--    <div class="p-field">-->
-<!--      <label for="classGroup.id">Class Group</label>-->
-<!--      <input readonly type="text" pInputText id="classGroup.id" [(ngModel)]="student.classGroup.id"/>-->
+<!--      <label for="classGroupId">Class Group</label>-->
+<!--      <input readonly type="text" pInputText id="classGroupId" [(ngModel)]="student.classGroup.id"/>-->
 <!--    </div>-->
 
     <div class="p-field">
